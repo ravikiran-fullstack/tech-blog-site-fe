@@ -1,0 +1,131 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.home {
+    
+    /* display: flex;
+    justify-content: center; */
+}
+
+.homeSection1{
+    height: 80vh;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeSection2{
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionHeading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sectionHeading h3{
+    color: rgb(149, 197, 219);
+}
+
+.postsSection{
+    /* background: rgb(250, 250, 250); */
+    /* box-shadow: 1px 10px 20px 1px rgb(67 38 100 / 15%); */
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.postsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.post{
+    background-color: rgba(0,143,104,0.95);
+    /* box-shadow: 1px 1px 15px 4px rgb(67 38 100 / 15%); */
+    box-shadow: 1px 5px 10px 10px rgb(67 38 100 / 15%);
+    height: 150px;
+    margin: 1em 0.7em;
+    border-radius: 3px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.85rem;
+
+}
+
+.reactPostStyle{
+    background-color: rgba(64, 214, 214, 0.95);
+}
+
+.nodePostStyle{
+    background-color: rgba(143, 17, 0, 0.95);
+}
+
+.javascriptPostStyle{
+    background-color: rgba(0, 143, 119, 0.95);
+}
+
+.typescriptPostStyle{
+    background-color: rgba(0, 50, 143, 0.95);
+}
+
+.databasePostStyle{
+    background-color: rgba(143, 0, 131, 0.95);
+}
+
+.otherPostStyle{
+    background-color: rgba(139, 146, 144, 0.95);
+}
+
+.post h3 {
+    font-size: 1.4em;
+    color: var(--green3);
+    text-align: center;
+    font-weight: 300;
+    margin: 0;
+    color: white;
+    --c: #61dafb;
+}
+
+a{
+    transition: all 0.5s;
+}
+
+a:hover{
+    transform: translate(0, -5px);
+    text-decoration: none;
+}
+
+.headingUnderline{
+    width: 10%;
+    border: 0;
+    border-top: 4px solid #fa4242;
+}
+
+hr {
+    width: 35%;
+    border: 0;
+    border-top: 4px solid #fae042;
+    margin: 2.5em auto 2.3em;
+}
+
+.btnStyles{
+    margin-top: 5px;
+    box-shadow: 1px 1px 15px rgb(67 38 100 / 15%); 
+    transition: all 0.5s;
+}
+
+.btnStyles:hover{
+    transform: translate(0, -5px);
+    text-decoration: none;
+}
