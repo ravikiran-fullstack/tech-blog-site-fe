@@ -10,18 +10,24 @@
 }
 
 .homeSection1{
-    height: 80vh;
-    border: 1px solid red;
+    height: 90vh;
+    padding-left: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
 }
 
 .homeSection2{
-    border: 1px solid blue;
+    font-size: 2rem;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: hue-rotate(90deg)
 }
 
 .sectionHeading{

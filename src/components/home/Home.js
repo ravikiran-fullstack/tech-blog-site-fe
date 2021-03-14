@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import "./home.css";
-// import bg from "./../../images/bg.png";
-
-import test from "./port.jpg";
-
 import HomeTopPostsSection from "./HomeTopPostsSection";
 import HomeBackgroundSection from "./HomeBackgroundSection";
 import Main from "./Main";
