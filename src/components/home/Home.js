@@ -34,7 +34,7 @@ const Home = () => {
         <div className="row mt-5">
           <div className="col-sm">
             {categories.map((category, index) => {
-              return <Posts key={category} category={category} />;
+              return <Posts key={index} category={category} />;
             })}
           </div>
         </div>

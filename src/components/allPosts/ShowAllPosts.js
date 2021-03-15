@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import classnames from "classnames";
 
-const HomeTopPostsSection = () => {
-  const [topPosts, setTopPosts] = useState([]);
+import './ShowAllPosts.css';
 
+const ShowAllPosts = ({ category }) => {
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5500/articles")
+    fetch(`http://localhost:5500/articles/category/${category}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setTopPosts(data);
+        setPosts(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [category]);
 
   return (
-    <div>
-      <div className="sectionHeading">
-        <h3>Top Posts</h3>
+    <div className="container showAllPosts">
+      <div className="row">
+        <div className="col-12 sectionHeading">
+          <h3 className="text-capitalize">All {category} posts</h3>
+        </div>
       </div>
-      <div className="container">
-        <div className="row">
-          {topPosts.slice(0, 6).map(post => {
-            return (
-              <div className="col-lg-4 col-md-6" key={post.slug}>
-                <a
+      <div className="row">
+        {posts.map(post => {
+          return (
+            <div className="col-lg-4 col-md-6" key={post.slug}>
+              <Link
                   className={classnames({
                     frontTeaser: true,
                     post: true,
@@ -35,18 +38,16 @@ const HomeTopPostsSection = () => {
                     databasePostStyle: post.category === "database",
                     otherPostStyle: post.category === "other",
                   })}
-                  href={`https://jsonplaceholder.typicode.com/todos/${post.id}`}
+                  to={`/post/${post.slug}`}
                 >
-                  <h3>{post.title}</h3>
-                  <p>{post.category}</p>
-                </a>
-              </div>
-            );
-          })}
-        </div>
+                <h3>{post.title}</h3>
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default HomeTopPostsSection;
+export default ShowAllPosts;

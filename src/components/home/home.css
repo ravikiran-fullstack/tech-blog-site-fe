@@ -3,11 +3,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-.home {
-    
-    /* display: flex;
-    justify-content: center; */
-}
 
 .homeSection1{
     height: 90vh;
@@ -24,10 +19,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    filter: hue-rotate(90deg)
+
 }
 
 .sectionHeading{
@@ -70,7 +65,7 @@
 }
 
 .reactPostStyle{
-    background-color: rgba(64, 214, 214, 0.95);
+    background-color: #51E4FB;
 }
 
 .nodePostStyle{

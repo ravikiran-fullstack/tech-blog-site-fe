@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{background:"transparent"}}>
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/home">
         <h4>Tech Blog Site</h4>
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -21,24 +22,39 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/home">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/posts/reactjs">
               ReactJS
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/posts/nodejs">
               NodeJS
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/posts/javascript">
               Javascript
-            </a>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/posts/typescript">
+              Typescript
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/posts/database">
+              Database
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/posts/other">
+              Other
+            </Link>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">

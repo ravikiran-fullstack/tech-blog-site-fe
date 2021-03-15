@@ -4,8 +4,8 @@ import mernBg from "./../../images/mern-bg.jpg";
 const Main = () => {
   return (
     <div className="row">
-      <div className="col-sm homeSection1">A Community To Share And Learn All About MERN & Other Technologies</div>
-      <div className="col-sm homeSection2"  style={{
+      <div className="col-sm-5 homeSection1">A Community To Share And Learn All About MERN & Other Technologies</div>
+      <div className="col-sm-7 homeSection2"  style={{
         backgroundImage: `url(${mernBg})`
       }}></div>
     </div>

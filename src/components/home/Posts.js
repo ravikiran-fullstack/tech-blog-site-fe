@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import classnames from "classnames";
 
-const Posts = ({category}) => {
-    const [posts, setPosts] = useState([]);
+const Posts = ({ category }) => {
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5500/articles/category/${category}`)
@@ -22,11 +23,10 @@ const Posts = ({category}) => {
       </div>
       <div className="container">
         <div className="row">
-          {posts.slice(0, 6).map((post) => {
+          {posts.slice(0, 6).map(post => {
             return (
-              <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-6" key={post.slug}>
                 <a
-                  key={post.slug}
                   className={classnames({
                     frontTeaser: true,
                     post: true,
@@ -48,14 +48,14 @@ const Posts = ({category}) => {
       </div>
 
       <div className="sectionHeading">
-        <button type="button" className="btn btn-outline-secondary btnStyles">
+        <Link to={`/posts/${category}`} type="button" className="btn btn-outline-secondary btnStyles">
           View All Posts
-        </button>
+        </Link>
       </div>
 
       {/* {category != "other" && <hr />} */}
     </div>
   );
-}
+};
 
-export default Posts
+export default Posts;
