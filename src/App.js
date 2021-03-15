@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer";
 import AllPosts from './components/allPosts/AllPosts';
 
 import SinglePost from './components/singlePost/SinglePost';
+import SearchResults from './components/searchResults/SearchResults';
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route path="/post/:slug">
               <SinglePost />
+            </Route>
+            <Route path="/search">
+              <SearchResults />
             </Route>
           </Switch>
         </div>

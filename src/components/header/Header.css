@@ -1,0 +1,37 @@
+.menuOpen {
+  display: flex !important;
+  flex-direction: column-reverse;
+  width: 400px;
+  height: 400px;
+  background: white;
+  position: absolute;
+  z-index: 50;
+  top: 55px;
+  right: 0;
+  padding-left: 10px;
+  /* transition: 500ms ease right;
+  padding: 0; */
+}
+
+.menuOpen ul {
+  width: 200%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.menuOpen li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.menuOpen a {
+  width: 100%;
+  padding: 10px;
+  height: 65px;
+}
+
+.nav-link a:hover{
+    color: #2997ff;
+}

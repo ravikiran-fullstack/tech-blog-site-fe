@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {Link} from 'react-router-dom';
+import parse from 'html-react-parser';
 
 const SinglePost = () => {
   const [post, setPost] = useState(null);
@@ -18,23 +20,36 @@ const SinglePost = () => {
   }, []);
 
   if (post) {
-    return(
-        <div className="container">
-      <h3>{post.title}</h3>
-      <div className="text-muted mb-3">
-        <h6>{post.createdAt}</h6>
+    return (
+      <div className="container" style={{height:'80vh'}}>
+        <div className="row">
+          <div className="col-12 text-center">
+            <h3>{post.title}</h3>
+            <div className="text-muted mb-3">
+              <h6>{post.createdAt}</h6>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 text-center">
+            {post.description} {parse(post.sanatizedHtml)}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center">
+            <Link to="/articles/" className="btn btn-secondary">
+              All Articles
+            </Link>
+            <Link
+              to={`/posts/edit/${post.slug}`}
+              className="btn btn-info ml-4"
+            >
+              Edit
+            </Link>
+          </div>
+        </div>
       </div>
-      <div>
-        {post.description} {post.sanatizedHtml}
-      </div>
-      <a href="/articles/" className="btn btn-secondary">
-        All Articles
-      </a>
-      <a href="/articles/edit/<%= article.slug %>" className="btn btn-info">
-        Edit
-      </a>
-    </div>
-    )
+    );
   } else {
     return (
       <div className="container">

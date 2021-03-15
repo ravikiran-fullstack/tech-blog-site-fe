@@ -1,9 +1,21 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import './Header.css';
 
 const Header = () => {
+  const searchPosts = (event) => {
+    console.log("searchString", searchString);
+    window.location.assign(`/search?search=${searchString}`);
+  };
+
+  const [searchString, setSearchString] = useState();
+  const [active, setActive] = useState(true);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" style={{background:"transparent"}}>
+    <nav
+      className="navbar navbar-expand-lg navbar-light"
+      style={{ background: "transparent" }}
+    >
       <Link className="navbar-brand" to="/home">
         <h4>Tech Blog Site</h4>
       </Link>
@@ -15,11 +27,12 @@ const Header = () => {
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        onClick={() => setActive(!active)}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className={`collapse navbar-collapse ${active && "menuOpen"}`} id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
             <Link className="nav-link" to="/home">
@@ -63,13 +76,17 @@ const Header = () => {
             type="search"
             placeholder="Search"
             aria-label="Search"
+            required
+            onChange={(e) => setSearchString(e.target.value)}
           />
-          <button className="btn btn-success my-2 my-sm-0" type="submit">
+          <button
+            className="btn btn-success my-2 my-sm-0"
+            type="button"
+            onClick={(e) => searchPosts(e)}
+          >
             Search
           </button>
-          <button className="btn btn-info my-2 my-sm-0 ml-2">
-            login
-          </button>
+          <button className="btn btn-info my-2 my-sm-0 ml-2">login</button>
         </form>
       </div>
     </nav>
