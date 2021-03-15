@@ -1,0 +1,2 @@
+1) Whenever allposts component for a category is loaded, view should be properly aligned 
+2) height of the allposts component should be minimum equal to 90vh, and footer shoul be below that, even if there are only few posts
