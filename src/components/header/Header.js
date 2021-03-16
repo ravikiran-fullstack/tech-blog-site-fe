@@ -10,7 +10,8 @@ const Header = () => {
   };
 
   const [searchString, setSearchString] = useState();
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
+  const [showProfileOptions, setShowProfileOptions] = useState(false);
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light"
@@ -86,7 +87,13 @@ const Header = () => {
           >
             Search
           </button>
-          <button className="btn btn-info my-2 my-sm-0 ml-2">login</button>
+          {/*  */}
+          <div className="dropdown" onClick={() => setShowProfileOptions(!showProfileOptions)}>
+            <img className="customAvatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+            <div className={`dropdown-content ${showProfileOptions && "dropdown-content-active"}`}>
+              <button className="btn btn-info my-2 my-sm-0 ml-2">login</button>
+            </div>
+          </div>
         </form>
       </div>
     </nav>
