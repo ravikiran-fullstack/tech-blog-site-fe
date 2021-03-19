@@ -1,0 +1,76 @@
+.postDisplay{
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    margin: 0 auto;
+    transition: all 0.5s;
+    box-shadow:-6px 6px 16px 3px rgb(0 0 0 / 20%);
+    text-decoration: none;
+}
+
+a:hover{
+    transform: translateY(0, -5px);
+}
+
+.postDisplay .imageText{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.postDisplay .postTitle, .postDate, .categoryContainer{
+    float: right;
+    width: 100%;
+    z-index: 10;
+    font-weight: 300;
+    color: white;
+}
+
+.postDisplay div{
+    float: right;
+    width: 100%;
+    z-index: 10;
+    font-weight: 300;
+}
+
+.categoryContainer{
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    margin-left: -1px;
+    color: white;
+}
+
+.categoryContainer .category{
+    border-radius: 5px;
+    margin-right: 4px;
+    padding: 4px 8px;
+}
+
+.postTitle{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-block-start: 0;
+    margin-block-end: 10px;
+    color: black !important;
+    text-transform: uppercase;
+    
+    
+    padding: 5px 2px;
+    border-radius: 5px;
+}
+
+.postDate{
+    color: #999;
+    font-size: 14px;
+}

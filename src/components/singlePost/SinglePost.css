@@ -1,0 +1,10 @@
+.loadingContainer {
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  display: flex;
+  background: #000;
+  overflow: hidden;
+  color: white;
+}
