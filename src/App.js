@@ -1,5 +1,4 @@
 import React from "react";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/Header";
@@ -35,7 +34,7 @@ const App = () => {
             </Route>
           </Switch>
         </div>
-        <Footer style={{position: "fixed",left: 0, bottom: 0}}/>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

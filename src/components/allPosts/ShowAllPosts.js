@@ -1,17 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
-
+import React, { useState, useEffect, useMemo } from "react";
 import PostDisplay from "../postDisplay/PostDisplay";
 
-import Loading from '../utils/loadingIndicator/LoadingIndicator';
+import Loading from "../utils/loadingIndicator/LoadingIndicator";
 
 import "./ShowAllPosts.css";
 
 const ShowAllPosts = ({ category }) => {
   const [posts, setPosts] = useState([]);
+  const [postsToDisplay, setPostsToDisplay] = useState([]);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
+  const [currentPage, setCurrentPage] = useState(1);
+  console.log("currentpage", currentPage);
+
+  const pageSize = 6;
+
+  const [isNext, setIsNext] = useState(true);
+  const [isPrevious, setIsPrevious] = useState(false);
+
+  const numberOfPages = Math.ceil(posts.length / pageSize);
+  const pagesArray = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    pagesArray.push(i);
+  }
+
+  console.log(pagesArray);
+
+  console.log("numberOfPages", numberOfPages);
+  useEffect(() => { 
     setLoading(true);
     fetch(`http://localhost:5500/articles/category/${category}`)
       .then((response) => response.json())
@@ -26,6 +41,24 @@ const ShowAllPosts = ({ category }) => {
       });
   }, [category]);
 
+  useEffect(() => {
+    const firstIndex = currentPage * pageSize - pageSize;
+    const lastIndex = currentPage * pageSize - 1;
+    setPostsToDisplay(posts.slice(firstIndex, lastIndex));
+  }, [posts, currentPage]);
+
+  useMemo(() => {
+    console.log(currentPage);
+    if (currentPage === 1) {
+      setIsPrevious(false);
+      setIsNext(true);
+    }
+    if (currentPage === numberOfPages) {
+      setIsPrevious(true);
+      setIsNext(false);
+    }
+  }, [currentPage, pageSize]);
+
   const style = {
     gridTemplateColumns: `repeat(${
       posts.length >= 5 ? "3" : posts.length < 2 ? "1" : "2"
@@ -35,13 +68,13 @@ const ShowAllPosts = ({ category }) => {
     }`,
   };
 
-  if(loading){
+  if (loading) {
     return (
       <div className="loadingContainer">
-        <Loading/>
+        <Loading />
       </div>
     )
-  }else {
+  } else {
     return (
       <div className="container showAllPosts">
         <div className="row">
@@ -50,33 +83,43 @@ const ShowAllPosts = ({ category }) => {
           </div>
         </div>
         <div className="row">
-          {/* {posts.map(post => {
-            return (
-              <div className="col-lg-4 col-md-6" key={post.slug}>
-                <Link
-                    className={classnames({
-                      frontTeaser: true,
-                      post: true,
-                      reactPostStyle: post.category === "reactjs",
-                      nodePostStyle: post.category === "nodejs",
-                      javascriptPostStyle: post.category === "javascript",
-                      typescriptPostStyle: post.category === "typescript",
-                      databasePostStyle: post.category === "database",
-                      otherPostStyle: post.category === "other",
-                    })}
-                    to={`/post/${post.slug}`}
-                  >
-                  <h3>{post.title}</h3>
-                </Link>
-              </div>
-            );
-          })} */}
           <section className="postsGrid" style={style}>
-            {posts.map((post, index) => {
+            {postsToDisplay.map((post, index) => {
               return <PostDisplay key={index} post={post} />;
             })}
           </section>
         </div>
+
+        <nav aria-label="Page navigation example" style={{ marginTop: "40px" }}>
+          <ul className="pagination justify-content-center">
+            <li
+              className={`page-item ${isPrevious && (pagesArray.length === 1) && "disabled"}`}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              <a className="page-link" href="#" tabindex="-1">
+                Previous
+              </a>
+            </li>
+            {pagesArray.map((page, index) => {
+              return (
+                <li key={page} className={`page-item ${currentPage === page && 'currentPage'}`} onClick={() => setCurrentPage(page)}>
+                  <a className="page-link" href="#">
+                    {page}
+                  </a>
+                </li>
+              );
+            })}
+
+            <li
+              className={`page-item ${!isNext && (pagesArray.length === 1) && "disabled"}`}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              <a className="page-link" href="#">
+                Next
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
   }

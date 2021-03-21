@@ -6,7 +6,7 @@ import './footer.css';
 const Footer = () => {
   return (
     
-<footer className="bg-dark text-center text-white">
+<footer className="bg-dark text-center text-white"  style={{position: "static",left: 0, bottom: 0}}>
   <div className="container p-4">
     <section className="mb-4">
       <SocialIcon className="socialIcons" url="https://twitter.com/jaketrent" target="_blank"/>
