@@ -38,28 +38,6 @@ const Posts = ({ category }) => {
       </div>
       <div className="container">
         <div className="row">
-          {/* {posts.slice(0, 6).map(post => {
-            return (
-              <div className="col-lg-4 col-md-6" key={post.slug}>
-                <a
-                  className={classnames({
-                    frontTeaser: true,
-                    post: true,
-                    reactPostStyle: post.category === "reactjs",
-                    nodePostStyle: post.category === "nodejs",
-                    javascriptPostStyle: post.category === "javascript",
-                    typescriptPostStyle: post.category === "typescript",
-                    databasePostStyle: post.category === "database",
-                    otherPostStyle: post.category === "other",
-                  })}
-                  href={`http://localhost:5500/articles/${post.slug}`}
-                >
-                  <h3>{post.title}</h3>
-                </a>
-              </div>
-            );
-          })} */}
-
           {loading ? (
             <div className="loadingContainer">
               <Loading />
@@ -83,8 +61,6 @@ const Posts = ({ category }) => {
           View All Posts
         </Link>
       </div>
-
-      {/* {category != "other" && <hr />} */}
     </div>
   );
 };

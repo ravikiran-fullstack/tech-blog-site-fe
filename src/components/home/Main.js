@@ -1,5 +1,4 @@
 import React from "react";
-import bg from "./../../images/bg.jpg";
 import mernBg from "./../../images/mern-bg.jpg";
 const Main = () => {
   return (

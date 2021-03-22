@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import classnames from "classnames";
-
 import PostDisplay from '../postDisplay/PostDisplay';
 
 const HomeTopPostsSection = () => {
@@ -37,29 +35,6 @@ const HomeTopPostsSection = () => {
       </div>
       <div className="container">
         <div className="row">
-          {/* {topPosts.slice(0, 6).map(post => {
-            return (
-              <div className="col-lg-4 col-md-6" key={post.slug}>
-                <a
-                  className={classnames({
-                    frontTeaser: true,
-                    post: true,
-                    reactPostStyle: post.category === "reactjs",
-                    nodePostStyle: post.category === "nodejs",
-                    javascriptPostStyle: post.category === "javascript",
-                    typescriptPostStyle: post.category === "typescript",
-                    databasePostStyle: post.category === "database",
-                    otherPostStyle: post.category === "other",
-                  })}
-                  href={`https://jsonplaceholder.typicode.com/todos/${post.id}`}
-                >
-                  <h3>{post.title}</h3>
-                  <p>{post.category}</p>
-                </a>
-              </div>
-            );
-          })} */}
-
           <section className="postsGrid" style={{gridTemplateColumns: `repeat(3, minmax(275px, 400px))`, height: '600px'}}>
             {
               topPosts.map((post, index) => {
