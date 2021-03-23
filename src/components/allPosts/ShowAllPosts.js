@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import PostDisplay from "../postDisplay/PostDisplay";
+import PostCardDisplay from "../postCardDisplay/PostCardDisplay";
 
 import Loading from "../utils/loadingIndicator/LoadingIndicator";
 
@@ -39,7 +39,7 @@ const ShowAllPosts = ({ category }) => {
 
   useEffect(() => {
     const firstIndex = currentPage * pageSize - pageSize;
-    const lastIndex = currentPage * pageSize - 1;
+    const lastIndex = currentPage * pageSize ;
     setPostsToDisplay(posts.slice(firstIndex, lastIndex));
   }, [posts, currentPage]);
 
@@ -53,15 +53,6 @@ const ShowAllPosts = ({ category }) => {
       setIsNext(false);
     }
   }, [currentPage, pageSize]);
-
-  const style = {
-    gridTemplateColumns: `repeat(${
-      posts.length >= 5 ? "3" : posts.length < 2 ? "1" : "2"
-    }, minmax(275px, 400px))`,
-    height: `${
-      posts.length > 6 ? "900px" : posts.length < 3 ? "300px" : "600px"
-    }`,
-  };
 
   if (loading) {
     return (
@@ -78,11 +69,11 @@ const ShowAllPosts = ({ category }) => {
           </div>
         </div>
         <div className="row">
-          <section className="postsGrid" style={style}>
+          <>
             {postsToDisplay.map((post, index) => {
-              return <PostDisplay key={index} post={post} />;
+              return <PostCardDisplay key={index} post={post} />;
             })}
-          </section>
+          </>
         </div>
 
         <nav aria-label="Page navigation example" style={{ marginTop: "40px" }}>

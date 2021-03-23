@@ -3,7 +3,14 @@
 }
 
 .card-body{
-    padding: 0;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+.card-title{
+    font-size: 2.25rem;
+    text-align: center;
 }
 
 .card-img-top{

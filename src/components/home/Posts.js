@@ -15,7 +15,7 @@ const Posts = ({ category }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setPosts(data.slice(0, 5));
+        setPosts(data.slice(0, 6));
         setLoading(false);
       })
       .catch((err) => {
