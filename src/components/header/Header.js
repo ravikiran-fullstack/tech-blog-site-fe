@@ -1,8 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+
+import { UserAuthenticationContext } from "../../context/UserAuthenticationContext";
+
 import { Link } from "react-router-dom";
-import './Header.css';
+import "./Header.css";
 
 const Header = () => {
+  const [isUserLoggedIn, updateLogInStatus] = useContext(
+    UserAuthenticationContext
+  );
+
+  // const updateLogInStatus = () => {
+  //   setIsUserLoggedIn(!isUserLoggedIn);
+  // };
+
   const searchPosts = (event) => {
     console.log("searchString", searchString);
     window.location.assign(`/search?search=${searchString}`);
@@ -12,25 +23,27 @@ const Header = () => {
   const [isActive, setIsActive] = useState(false);
 
   const [searchString, setSearchString] = useState();
-  
+
   const [showProfileOptions, setShowProfileOptions] = useState(false);
 
   useEffect(() => {
     const pageClickEvent = (e) => {
-      if(dropdownRef.current !== null && !dropdownRef.current.contains(e.target)){
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(e.target)
+      ) {
         console.log(e);
         setIsActive(!isActive);
       }
-    }
+    };
 
-    if(isActive){
-      window.addEventListener('click', pageClickEvent);
+    if (isActive) {
+      window.addEventListener("click", pageClickEvent);
     }
 
     return () => {
-      window.removeEventListener('click', pageClickEvent);
-    }
-
+      window.removeEventListener("click", pageClickEvent);
+    };
   }, [isActive]);
   return (
     <nav
@@ -53,7 +66,11 @@ const Header = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div ref={dropdownRef} className={`navbar-collapse menu ${isActive? "active" : "inactive"}`} id="navbarSupportedContent">
+      <div
+        ref={dropdownRef}
+        className={`navbar-collapse menu ${isActive ? "active" : "inactive"}`}
+        id="navbarSupportedContent"
+      >
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
             <Link className="nav-link" to="/home">
@@ -107,7 +124,13 @@ const Header = () => {
           >
             Search
           </button>
-          <button className="btn btn-info my-2 my-sm-0 ml-2">login</button>
+          <button
+            type="button"
+            className="btn btn-info my-2 my-sm-0 ml-2"
+            onClick={updateLogInStatus}
+          >
+            {isUserLoggedIn ? "Log Out" : "Login"}
+          </button>
           {/*  */}
           {/* <div>
             <img className="customAvatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>

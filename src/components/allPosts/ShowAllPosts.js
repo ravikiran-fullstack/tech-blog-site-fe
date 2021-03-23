@@ -84,7 +84,7 @@ const ShowAllPosts = ({ category }) => {
               }`}
               onClick={() => setCurrentPage(currentPage - 1)}
             >
-              <a className="page-link" href="#" tabindex="-1">
+              <a className="page-link" href="#">
                 Previous
               </a>
             </li>
