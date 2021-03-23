@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import PostDisplay from "../postDisplay/PostDisplay";
+import PostCardDisplay from "../postCardDisplay/PostCardDisplay";
 import Loading from "./../utils/loadingIndicator/LoadingIndicator";
 
 const Posts = ({ category }) => {
@@ -37,17 +38,17 @@ const Posts = ({ category }) => {
         <div className="headingUnderline"></div>
       </div>
       <div className="container">
-        <div className="row">
+        <div className="row d-flex flex-wrap">
           {loading ? (
             <div className="loadingContainer">
               <Loading />
             </div>
           ) : (
-            <section className="postsGrid" style={style}>
+            <>
               {posts.map((post, index) => {
-                return <PostDisplay key={index} post={post} />;
+                return <PostCardDisplay key={index} post={post} />;
               })}
-            </section>
+            </>
           )}
         </div>
       </div>

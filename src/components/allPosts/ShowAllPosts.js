@@ -10,7 +10,6 @@ const ShowAllPosts = ({ category }) => {
   const [postsToDisplay, setPostsToDisplay] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  console.log("currentpage", currentPage);
 
   const pageSize = 6;
 
@@ -23,10 +22,7 @@ const ShowAllPosts = ({ category }) => {
     pagesArray.push(i);
   }
 
-  console.log(pagesArray);
-
-  console.log("numberOfPages", numberOfPages);
-  useEffect(() => { 
+  useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:5500/articles/category/${category}`)
       .then((response) => response.json())
@@ -48,7 +44,6 @@ const ShowAllPosts = ({ category }) => {
   }, [posts, currentPage]);
 
   useMemo(() => {
-    console.log(currentPage);
     if (currentPage === 1) {
       setIsPrevious(false);
       setIsNext(true);
@@ -73,7 +68,7 @@ const ShowAllPosts = ({ category }) => {
       <div className="loadingContainer">
         <Loading />
       </div>
-    )
+    );
   } else {
     return (
       <div className="container showAllPosts">
@@ -93,7 +88,9 @@ const ShowAllPosts = ({ category }) => {
         <nav aria-label="Page navigation example" style={{ marginTop: "40px" }}>
           <ul className="pagination justify-content-center">
             <li
-              className={`page-item ${isPrevious && (pagesArray.length === 1) && "disabled"}`}
+              className={`page-item ${
+                isPrevious && pagesArray.length === 1 && "disabled"
+              }`}
               onClick={() => setCurrentPage(currentPage - 1)}
             >
               <a className="page-link" href="#" tabindex="-1">
@@ -102,7 +99,13 @@ const ShowAllPosts = ({ category }) => {
             </li>
             {pagesArray.map((page, index) => {
               return (
-                <li key={page} className={`page-item ${currentPage === page && 'currentPage'}`} onClick={() => setCurrentPage(page)}>
+                <li
+                  key={page}
+                  className={`page-item ${
+                    currentPage === page && "currentPage"
+                  }`}
+                  onClick={() => setCurrentPage(page)}
+                >
                   <a className="page-link" href="#">
                     {page}
                   </a>
@@ -111,7 +114,9 @@ const ShowAllPosts = ({ category }) => {
             })}
 
             <li
-              className={`page-item ${!isNext && (pagesArray.length === 1) && "disabled"}`}
+              className={`page-item ${
+                !isNext && pagesArray.length === 1 && "disabled"
+              }`}
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               <a className="page-link" href="#">
